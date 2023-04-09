@@ -1,0 +1,74 @@
+In this notebook, we will be diving into the world of functional programming in R using the *purrr* library.
+
+Functional programming is a programming paradigm that emphasizes the use of functions to transform and manipulate data. The *purrr* library is a powerful tool for functional programming in R, providing a wide range of functions for working with lists, vectors, and other data structures in a functional way.
+
+First, let's start by installing and loading the necessary library: *purrr*. You can do this by running the following code:
+
+
+```{r}
+# load the library
+library(purrr)
+```
+
+Let's create a list of numbers from 1 to 10, we can do this using the *seq* function and the *map* function from the *purrr* library.
+
+```{r}
+nums <- seq(1, 10)
+nums
+```
+
+Now, we can use the *map* function to perform an operation on each element of the list. Let's square each number in the list, we can do this using the following code:
+
+```{r}
+squared_nums <- map(nums, ~ .^2)
+squared_nums
+```
+
+The *map* function takes two arguments: the first is the list on which to operate, and the second is the function to apply to each element of the list. The ~ symbol is used to create an anonymous function.
+
+We can also use the *map_dbl* function to convert the list to a numeric vector.
+
+```{r}
+squared_nums_dbl <- map_dbl(nums, ~ .^2)
+squared_nums_dbl
+```
+
+This function will also convert the result to a numeric vector.
+
+We can also use the *filter* function to keep only the elements of the list that match a certain condition. Let's keep only the even numbers from the list:
+
+```{r}
+even_nums <- nums[nums %% 2 == 0]
+even_nums 
+```
+
+The *filter* function takes two arguments: the first is the list on which to operate, and the second is the function that returns a logical value indicating whether to keep or discard each element of the list.
+
+We can also use the *reduce* function to combine the elements of the list into a single value. Let's sum all the numbers in the list.
+
+```{r}
+sum_nums <- reduce(nums, `+`)
+sum_nums
+```
+
+The reduce function takes two arguments: the first is the list on which to operate, and the second is the function to apply to the elements of the list.
+
+We can also use the *pmap* function to apply a function to multiple lists element-wise. Let's create two lists, one with numbers from 1 to 5 and another with numbers from 6 to 10 and we will add them element-wise.
+
+
+```{r}
+list1 <- seq(1, 5)
+list2 <- seq(6, 10)
+
+list1
+list2
+```
+
+```{r}
+sum_lists <- pmap(list(list1, list2), `+`)
+sum_lists
+```
+
+The *pmap* function takes two arguments: the first is a list of lists and the second is the function to apply to the elements of the lists.
+
+That's it! You've just seen some examples of how to use the *purrr* library for functional programming in R. The *purrr* library is a powerful tool for working with data in a functional way, providing a wide range of functions for working with lists, vectors and other data structures. It allows you to perform operations on data in a concise and readable way, making your code more efficient and easier to understand. I hope you found this notebook helpful and you can start using the *purrr* library in your own projects. Keep in mind that this is just a glimpse of the capabilities of the *purrr* library, and there are many other functions and features you can explore.
